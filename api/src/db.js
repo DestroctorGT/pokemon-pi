@@ -24,11 +24,11 @@ typePokemon(sequelize);
 
 //nos traemos los modelos que acabamos de crear de la clase sequelize para hacer las relaciones
 
-const { pokemon, type } = sequelize.models;
+const { Pokemon, Type } = sequelize.models;
 
 //Creamos la relacion N:N
-pokemon.belongsToMany(type, { through: "PokemonTypes" });
-type.belongsToMany(pokemon, { through: "PokemonTypes" });
+Pokemon.belongsToMany(Type, { through: "PokemonTypes" });
+Type.belongsToMany(Pokemon, { through: "PokemonTypes" });
 
 //exportamos la clase sequelize que acabamos de crear junto con sus models.
 module.exports = {

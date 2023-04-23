@@ -21,6 +21,8 @@ app.use((req, res, next) => {
 });
 
 // ROUTES
-app.use("/", routes);
+app.use("/", (req, res) => {
+  res.status(200).json({ message: "all good" });
+});
 
 module.exports = app;
