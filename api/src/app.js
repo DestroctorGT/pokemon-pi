@@ -21,8 +21,8 @@ app.use((req, res, next) => {
 });
 
 // ROUTES
-app.use("/", (req, res) => {
-  res.status(200).json({ message: "all good" });
-});
+//primero se dirige al index.js que esta en la carpeta routes donde contiene la ruta /pokemon
+//luego se dirige al archivo pokemon.js de la carpeta routes y utiliza las rutas que se crearon alli.
+app.use("/", routes); //localhost:3001/
 
-module.exports = app;
+http: module.exports = app;
