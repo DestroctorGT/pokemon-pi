@@ -1,12 +1,21 @@
+//Requerimos al modelo Pokemon de la config de la db.
 const { Pokemon } = require("../db");
 
+//Esta funcion es encargada de crear nuevos pokemones y agregarlo a la tabla Pokemons de la db
 async function createPokemon(req, res) {
   try {
+    //Los datos para crear el nuevo pokemon vienen de req.body
     const { name, image, life, attack, defense, type1, type2 } = req.body;
 
-    const newPokemon = { name, image, life, attack, defense, type1, type1 };
-
-    const pokemon = Pokemon.create({ newPokemon });
+    /*Usamos un metodo de sequelize llamado create que nos ayuda a insertar una nueva fila a nuestra db.
+    es el equivalente a "INSERT INTO"*/
+    const pokemon = await Pokemon.create({
+      name,
+      image,
+      life,
+      attack,
+      defense,
+    });
 
     res.status(200).json(pokemon);
   } catch (error) {
