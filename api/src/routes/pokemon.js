@@ -16,10 +16,14 @@ const getPokemonByName = require("../controllers/getPokemonByName");
 //requerimos al controller createPokemon para crear la ruta createpokemon
 const createPokemon = require("../controllers/createPokemon");
 
+//requerimos al controller getPokemonTypes para crear la ruta pokemontypes
+const getPokemonTypes = require("../controllers/getPokemonTypes");
+
 router.get("/getpokemons", getAllPokemons); //localhost:3001/pokemon/getpokemons
 router.get("/getpokemonid/:id", getPokemonById); //localhost:3001/pokemon/getpokemonid/:id
 router.get("/getPokemonByName", getPokemonByName); //localhost:3001/pokemon/getpokemonbyname/name?=...
 router.post("/createpokemon", createPokemon); //localhost:3001/pokemon/createpokemon
+router.get("/pokemontypes", getPokemonTypes); //localhost:3001/pokemon/pokemontypes
 
 //exportamos a router para luego conectarlo al server en app.js
 module.exports = router;
