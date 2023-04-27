@@ -4,6 +4,6 @@ const pokemon = require("./pokemon");
 
 /*acá usamos la ruta http://localhost:3001/pokemon y luego le pasamos el archivo pokemon.js donde contiene
 todas las rutas */
-router.use("/pokemon", pokemon);
+router.use("/", pokemon);
 
 module.exports = router;
