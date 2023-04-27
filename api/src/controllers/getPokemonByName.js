@@ -1,38 +1,48 @@
 const axios = require("axios");
 
 //Requerimos al modelo Pokemon
-const { Pokemon } = require("../db");
+const { Pokemon, Type } = require("../db");
 
 async function getPokemonByName(req, res) {
   try {
-    //El name viene por query //localhost:3001/pokemon/getpokemonbyname/name?= ... <-
+    //El name viene por query //localhost:3001/pokemon?name= ... <-
     const { name } = req.query;
 
-    //Se trae el pokemon de la API por NAME.
-    const { data } = await axios(`https://pokeapi.co/api/v2/pokemon/${name}`);
+    //Se crea un array para ir pusheando los datos recibidos de la API y db.
+    const newPokemons = [];
 
     //Se busca en la db el pokemon por name.
-    const pokemonDB = await Pokemon.findOne({
+    const pokemonDB = await Pokemon.findAll({
       //Usamos el condicional where para que matchee con el name recibido por query.
       where: { name: name },
 
-      //La propieda include nos trae la info de la relacion PokemonTypes
+      attributes: ["name", "image"],
+
+      //La propiedad include nos trae la info de la relacion PokemonTypes
       include: {
         model: Type,
         attributes: ["name"], //usamos la propiedad attributes para que solo nos traiga el name y no el ID
       },
     });
 
-    console.log(pokemonDB);
-    //Se crea un nuevo array de objetos con los datos recibidos de la API y db.
-    const newPokemons = [
-      {
-        name: data.name,
-        image: data.sprites.other["official-artwork"]["front_default"],
-        types: data.types,
-      },
-      pokemonDB,
-    ];
+    //recorremos el json que nos devuelve la db y pusheamos los objetos al array newPokemons.
+    if (pokemonDB.length > 0) {
+      pokemonDB.forEach((element) => {
+        newPokemons.push(element);
+      });
+    } else {
+      //Si no existe el pokemon en la db, se trae el pokemon de la API por NAME.
+      const { data } = await axios(`https://pokeapi.co/api/v2/pokemon/${name}`);
+
+      //Si la respuesta devuelve una data, esta se pushea al array.
+      if (Object.keys(data).length > 0) {
+        newPokemons.push({
+          name: data.name,
+          image: data.sprites.other["official-artwork"]["front_default"],
+          types: data.types,
+        });
+      }
+    }
 
     res.status(200).json(newPokemons);
   } catch (error) {
