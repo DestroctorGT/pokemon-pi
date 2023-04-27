@@ -6,6 +6,11 @@ de la db */
 
 module.exports = (sequelize) => {
   sequelize.define("Pokemon", {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+    },
     name: { type: DataTypes.STRING },
 
     image: { type: DataTypes.STRING },
