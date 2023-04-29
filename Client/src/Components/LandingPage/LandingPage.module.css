@@ -1,0 +1,20 @@
+.landingPage {
+  margin: 5px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logo {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+}
+
+h1 {
+  font-size: 50px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: white;
+}

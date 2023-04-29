@@ -1,0 +1,12 @@
+.navBar {
+  margin: 0;
+  padding: 15px;
+  display: flex;
+  list-style-type: none;
+}
+
+.logo {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+}
