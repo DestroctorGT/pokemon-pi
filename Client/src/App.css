@@ -8,12 +8,12 @@ button {
   font-size: large;
   font-weight: 300;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 button:hover {
-  transition: .2s;
-  border: 5px solid red;
+  transition: 0.2s;
+  border: 4px groove red;
 }
 
 footer {
