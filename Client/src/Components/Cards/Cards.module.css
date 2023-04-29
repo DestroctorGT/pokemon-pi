@@ -1,5 +1,12 @@
+article {
+  padding: 6em;
+}
+
 .cardContainer {
+  padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 80px;
+  flex-flow: row wrap;
 }

@@ -1,0 +1,12 @@
+span {
+  text-align: center;
+}
+
+.paginationContainer {
+  margin: 2em;
+  padding: 2em 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
