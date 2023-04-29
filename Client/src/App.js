@@ -1,12 +1,14 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Nav from "./Components/Nav/Nav";
 import LandingPage from "./Components/LandingPage/LandingPage";
 import Cards from "./Components/Cards/Cards";
 
 function App() {
+  const location = useLocation();
+
   return (
-    <div className="App">
+    <div className={location.pathname === "/" ? "App" : "Home"}>
       <Nav></Nav>
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
