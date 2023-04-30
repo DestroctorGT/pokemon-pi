@@ -20,6 +20,12 @@ export default function Nav() {
               type="text"
               placeholder="Search"
               className={styles.searchBarInput}></input>
+            <input
+              className={styles.searchBarButton}
+              type="image"
+              src={pokeballInput}
+              alt="search bar button input"
+            />
           </div>
         </li>
       </ul>
