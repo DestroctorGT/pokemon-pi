@@ -6,6 +6,8 @@ import Pagination from "../Pagination/Pagination";
 export default function Cards() {
   return (
     <article>
+      <label for="cars">Filter:</label>
+      <select name="filter"></select>
       <div className={styles.cardContainer}>
         <Card />
         <Card />
