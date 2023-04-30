@@ -1,3 +1,10 @@
+h1 {
+  font-size: 50px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: white;
+}
+
 .landingPage {
   margin: 5px;
   padding: 25px;
@@ -12,9 +19,20 @@
   height: auto;
 }
 
-h1 {
-  font-size: 50px;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: white;
+.buttonLanding {
+  margin: 5px;
+  padding: 8px;
+  border-style: none;
+  border-radius: 10px;
+  background-color: #ffb703;
+  text-transform: capitalize;
+  font-size: large;
+  font-weight: 300;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.buttonLanding:hover {
+  transition: 0.2s;
+  border: 4px groove red;
 }

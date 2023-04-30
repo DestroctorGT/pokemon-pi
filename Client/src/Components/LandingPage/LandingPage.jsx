@@ -9,7 +9,7 @@ export default function LandingPage() {
       <div>
         <h1>Pokemon App</h1>
         <Link to="/home">
-          <button>Let's begin the game</button>
+          <button className={styles.buttonLanding}>Let's begin the game</button>
         </Link>
       </div>
 
