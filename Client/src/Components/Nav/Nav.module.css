@@ -19,6 +19,10 @@
   gap: 10px;
 }
 
+.disableSearchBar {
+  display: none;
+}
+
 .searchBarInput {
   padding: 0.8em;
   width: 60%;

@@ -2,9 +2,10 @@ import React from "react";
 import Logo from "../../Assets/pokemonLogo.png";
 import pokeballInput from "../../Assets/pokeball-input.png";
 import styles from "../Nav/Nav.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Nav() {
+  const location = useLocation();
   return (
     <nav>
       <ul className={styles.navBar}>
@@ -15,7 +16,12 @@ export default function Nav() {
         </li>
 
         <li>
-          <div className={styles.searchBarContainer}>
+          <div
+            className={
+              location.pathname === "/home"
+                ? styles.searchBarContainer
+                : styles.disableSearchBar
+            }>
             <input
               type="text"
               placeholder="Search"
