@@ -37,14 +37,12 @@ export function Cards({ pokemons, updateCards }) {
           pokemons.map((element, index) => {
             return (
               <Card
-                key={index}
                 name={element.name}
                 image={element.image}
                 types={element.types}
               />
             );
           })}
-        <Card />
       </div>
       <Pagination></Pagination>
     </article>
