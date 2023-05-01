@@ -59,7 +59,7 @@ export function mapState(state) {
 //Creamos la funcion mapDispatch para poder ejecutar los dispatchs creados en el reducer.
 export function mapDispatch(dispatch) {
   return {
-    updateCards: () => dispatch(updateCards()),
+    updateCards: (addOrDecrease) => dispatch(updateCards(addOrDecrease)),
   };
 }
 
