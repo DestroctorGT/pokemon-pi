@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../LandingPage/LandingPage.module.css";
-import pokemonImg from "../../Assets/pokemonimg4.png";
+import pokemonImg from "../../Assets/pokemonimg2.png";
 import { Link } from "react-router-dom";
 
 export default function LandingPage() {
