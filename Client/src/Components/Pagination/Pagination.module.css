@@ -10,3 +10,16 @@ span {
   justify-content: center;
   gap: 8px;
 }
+
+.paginationButton {
+  padding: 0.5em;
+  box-shadow: 15px 15px 15px -3px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #ffb703;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.paginationButton:hover {
+  transform: scale(1.2);
+}
