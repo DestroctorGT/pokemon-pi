@@ -13,8 +13,8 @@ async function getPokemonById(req, res) {
     //Creamos un objeto vacio y dependiendo del ID, este sera llenado con la info de la api o la db
     let pokemonDetail = {};
 
-    //Si la longitud del ID es mayor a 1, se busca en la db. De lo contrario se busca en la api.
-    if (id.length > 1) {
+    //Si la longitud del ID es mayor a 4, se busca en la db. De lo contrario se busca en la api.
+    if (id.length > 4) {
       //Usamos el metodo findByPk que nos ayuda a buscar el pokemon por su ID.
       pokemonDetail = await Pokemon.findByPk(id, {
         //La propieda include nos trae la info de la relacion PokemonTypes
