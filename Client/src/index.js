@@ -2,15 +2,23 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+
+//Importamos el Router para poder crear rutas en nuestra app.
 import { BrowserRouter as Router } from "react-router-dom";
+
+//Importamos el objeto provider de react-redux para que nuestra app pueda usar el store.
+import { Provider } from "react-redux";
+import store from "./redux/store"; //Nuestro store
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
   </React.StrictMode>
 );
 

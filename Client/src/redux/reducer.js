@@ -13,7 +13,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case UPDATE_CARDS:
       return {
         ...state,
-        pokemons: [...state.pokemons, payload],
+        pokemons: payload,
       };
 
     default:
