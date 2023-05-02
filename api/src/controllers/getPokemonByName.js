@@ -39,7 +39,12 @@ async function getPokemonByName(req, res) {
         newPokemons.push({
           name: data.name,
           image: data.sprites.other["official-artwork"]["front_default"],
-          types: data.types,
+
+          /*Mapeamos el array types recibido en el json para guardar solo la propiedad name.
+            Ej: ['fire', 'normal'] */
+          types: data.types.map((ty) => {
+            return ty.type.name;
+          }),
         });
       }
     }

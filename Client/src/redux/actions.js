@@ -1,5 +1,5 @@
 //Importamos las variables Types.
-import { UPDATE_CARDS } from "./types";
+import { UPDATE_CARDS, ADD_BY_NAME } from "./types";
 
 //Importamos axios para hacer peticiones al server
 import axios from "axios";
@@ -29,5 +29,14 @@ export function updateCards(addOrDecrease) {
     );
 
     return dispatch({ type: UPDATE_CARDS, payload: data });
+  };
+}
+
+//Funcion encargada de buscar el pokemon por nombre. (Puede traer pokemons de la API como la DB)
+export function addByName(name) {
+  return async function (dispatch) {
+    let { data } = await axios(`http://localhost:3001/pokemon?name=${name}`);
+
+    return dispatch({ type: ADD_BY_NAME, payload: data });
   };
 }
