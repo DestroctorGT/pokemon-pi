@@ -1,5 +1,10 @@
 //Importamos las variables Types.
-import { UPDATE_CARDS, ADD_BY_NAME } from "./types";
+import {
+  UPDATE_CARDS,
+  ADD_BY_NAME,
+  GET_POKEMON_TYPES,
+  FILTER_POKEMON,
+} from "./types";
 
 //Importamos axios para hacer peticiones al server
 import axios from "axios";
@@ -38,5 +43,29 @@ export function addByName(name) {
     let { data } = await axios(`http://localhost:3001/pokemon?name=${name}`);
 
     return dispatch({ type: ADD_BY_NAME, payload: data });
+  };
+}
+
+//Funcion encargada de traer los tipos de pokemones de la API y guardarlos en la db para su posterior consumo
+export function getPokemonTypes() {
+  return async function (dispatch) {
+    let { data } = await axios("http://localhost:3001/pokemontypes");
+
+    /*Mapeamos el json que nos devuelve el server para solo tener un array de los tipos
+    ejem: ["normal", "fire", "poison"] */
+    const arrayTypes = data.map((type) => type.name);
+
+    return dispatch({ type: GET_POKEMON_TYPES, payload: arrayTypes });
+  };
+}
+
+//Funcion encargada de filtrar los pokemones por tipo de la API y la DB.
+export function filterPokemon(type) {
+  return async function (dispatch) {
+    let { data } = await axios(
+      `http://localhost:3001/filterPokemons?type=${type}`
+    );
+
+    return dispatch({ type: FILTER_POKEMON, payload: data });
   };
 }

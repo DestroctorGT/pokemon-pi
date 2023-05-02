@@ -22,6 +22,7 @@ async function getAllPokemons(req, res) {
     /*se recorre el resultado de la peticion al endpoint "https://pokeapi.co/api/v2/pokemon?offset=0&limit=12" 
     para luego pushearlo al array proimisesURL */
     data.results.forEach((element) => {
+      //En cada iteracion, las urls se guardan como promesas y tienen un estado pending
       let newData = axios(element.url);
 
       promisesURl.push(newData);
