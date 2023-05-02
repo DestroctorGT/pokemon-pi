@@ -14,7 +14,7 @@ async function getPokemonByName(req, res) {
     //Se busca en la db el pokemon por name.
     const pokemonDB = await Pokemon.findAll({
       //Usamos el condicional where para que matchee con el name recibido por query.
-      where: { name: name },
+      where: { name: name.toLowerCase() },
 
       attributes: ["name", "image"],
 
@@ -32,7 +32,9 @@ async function getPokemonByName(req, res) {
       });
     } else {
       //Si no existe el pokemon en la db, se trae el pokemon de la API por NAME.
-      const { data } = await axios(`https://pokeapi.co/api/v2/pokemon/${name}`);
+      const { data } = await axios(
+        `https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`
+      );
 
       //Si la respuesta devuelve una data, esta se pushea al array.
       if (Object.keys(data).length > 0) {
