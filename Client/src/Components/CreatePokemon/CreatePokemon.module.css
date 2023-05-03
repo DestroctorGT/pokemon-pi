@@ -1,0 +1,30 @@
+.formContainer {
+  margin: 3.6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  gap: 15px;
+}
+
+.typeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.displayButton {
+  display: inline-block;
+}
+
+.disableButton {
+  display: none;
+}
+
+.inputCreate {
+  padding: 0.8em;
+  width: 20%;
+  border-radius: 1em;
+  border-style: none;
+}

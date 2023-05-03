@@ -61,6 +61,17 @@ export function Nav({ addByName, updateCards }) {
             />
           </div>
         </li>
+
+        <li
+          id={
+            location.pathname === "/home"
+              ? styles.createButton
+              : styles.disableCreateButton
+          }>
+          <Link to="/create">
+            <button>Create Pokemon</button>
+          </Link>
+        </li>
       </ul>
     </nav>
   );
