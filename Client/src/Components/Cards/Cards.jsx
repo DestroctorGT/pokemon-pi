@@ -63,6 +63,7 @@ export function Cards({
           pokemons.map((element, index) => {
             return (
               <Card
+                id={element.id}
                 name={element.name}
                 image={element.image}
                 types={element.types}

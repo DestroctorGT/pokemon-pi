@@ -37,6 +37,7 @@ async function getAllPokemons(req, res) {
 
         poke.forEach((pokemon) => {
           newJSON.push({
+            id: pokemon.data.id,
             name: pokemon.data.name,
             image:
               pokemon.data.sprites.other["official-artwork"]["front_default"],
@@ -53,7 +54,7 @@ async function getAllPokemons(req, res) {
         if (parseInt(offset) === 1269) {
           //Se busca en la db todos los pokemons que se hayan creado.
           const pokemonDB = await Pokemon.findAll({
-            attributes: ["name", "image"],
+            attributes: ["id", "name", "image"],
 
             //La propiedad include nos trae la info de la relacion PokemonTypes
             include: {
