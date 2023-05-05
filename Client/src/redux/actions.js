@@ -3,7 +3,10 @@ import {
   UPDATE_CARDS,
   ADD_BY_NAME,
   GET_POKEMON_TYPES,
+  FILTER_SORTING_ACTIVATE,
   FILTER_POKEMON,
+  FILTER_POKEMON_NEXT,
+  FILTER_POKEMON_PREV,
 } from "./types";
 
 //Importamos axios para hacer peticiones al server
@@ -59,6 +62,14 @@ export function getPokemonTypes() {
   };
 }
 
+//Funcion encargada de activar las opciones de filtrado u ordenamiento.
+export function filterSortingActivate(str) {
+  return {
+    type: FILTER_SORTING_ACTIVATE,
+    payload: str,
+  };
+}
+
 //Funcion encargada de filtrar los pokemones por tipo de la API y la DB.
 export function filterPokemon(type) {
   return async function (dispatch) {
@@ -67,5 +78,19 @@ export function filterPokemon(type) {
     );
 
     return dispatch({ type: FILTER_POKEMON, payload: data });
+  };
+}
+
+//Funcion encargada de avanzar a la siguiente "pagina" en el array de pokemons filtrados.
+export function nextPageFilterPokemon() {
+  return {
+    type: FILTER_POKEMON_NEXT,
+  };
+}
+
+//Funcion encargada de retroceder a la "pagina" en el array de pokemons filtrados.
+export function prevPageFilterPokemon() {
+  return {
+    type: FILTER_POKEMON_PREV,
   };
 }

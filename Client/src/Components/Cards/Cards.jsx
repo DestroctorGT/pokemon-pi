@@ -11,16 +11,21 @@ import { connect } from "react-redux";
 import {
   updateCards,
   getPokemonTypes,
+  filterSortingActivate,
   filterPokemon,
 } from "../../redux/actions";
 
 //El dispatch y el state lo recibe por props
 export function Cards({
   pokemons,
+  pokemonsFilter,
   pokemonsTypes,
   updateCards,
   getPokemonTypes,
+  filterSortingActivate,
+  filtersAndSorting,
   filterPokemon,
+  pokemonsFilterIndex,
 }) {
   /*Cuando el componente se monta, se ejecuta la funcion updateCards y getPokemonTypes
   encargada de traer los pokemons y los tipos*/
@@ -36,11 +41,38 @@ export function Cards({
     filterPokemon(value);
   }
 
+  function handleFilterOn() {
+    filterSortingActivate("FILTER ON");
+  }
+
+  function handleFilterOff() {
+    filterSortingActivate("FILTER OFF");
+    updateCards();
+  }
+
+  function handleSortOn() {
+    filterSortingActivate("SORT ON");
+  }
+
+  function handleSortOff() {
+    filterSortingActivate("SORT OFF");
+    updateCards();
+  }
+
   return (
     <article>
       <div className={styles.filterContainters}>
+        {filtersAndSorting.is_filter_on === false ? (
+          <button onClick={handleFilterOn}>
+            <span class="material-symbols-outlined">filter_alt_off</span>
+          </button>
+        ) : (
+          <button onClick={handleFilterOff}>
+            <span class="material-symbols-outlined">filter_alt</span>
+          </button>
+        )}
+
         <div>
-          <label>FILTER: </label>
           <select name="filter" onChange={handleFilter}>
             {/*Mapeamos el json pokemonTypes para renderizar etiquetas option*/}
 
@@ -51,8 +83,15 @@ export function Cards({
           </select>
         </div>
 
+        {filtersAndSorting.is_sorting_on === false ? (
+          <button onClick={handleSortOn}>SORT OFF</button>
+        ) : (
+          <button onClick={handleSortOff}>
+            <span class="material-symbols-outlined">sort</span>
+          </button>
+        )}
+
         <div>
-          <label>ORDER: </label>
           <select name="order"></select>
         </div>
       </div>
@@ -61,6 +100,18 @@ export function Cards({
         {/* mapeamos el array pokemons para renderizar un componente Card y por props le enviamos su data */}
         {pokemons &&
           pokemons.map((element, index) => {
+            return (
+              <Card
+                id={element.id}
+                name={element.name}
+                image={element.image}
+                types={element.types}
+              />
+            );
+          })}
+
+        {pokemonsFilter &&
+          pokemonsFilter[pokemonsFilterIndex]?.map((element, index) => {
             return (
               <Card
                 id={element.id}
@@ -80,6 +131,9 @@ export function Cards({
 export function mapState(state) {
   return {
     pokemons: state.pokemons,
+    filtersAndSorting: state.filtersAndSorting,
+    pokemonsFilter: state.pokemonsFilter,
+    pokemonsFilterIndex: state.pokemonsFilterIndex,
     pokemonsTypes: state.pokemonsTypes,
   };
 }
@@ -89,6 +143,7 @@ export function mapDispatch(dispatch) {
   return {
     updateCards: (addOrDecrease) => dispatch(updateCards(addOrDecrease)),
     getPokemonTypes: () => dispatch(getPokemonTypes()),
+    filterSortingActivate: (str) => dispatch(filterSortingActivate(str)),
     filterPokemon: (type) => dispatch(filterPokemon(type)),
   };
 }

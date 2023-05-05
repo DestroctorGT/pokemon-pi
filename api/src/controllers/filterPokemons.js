@@ -34,10 +34,14 @@ async function filterPokemon(req, res) {
 
     if (promisesURl.length > 0) {
       Promise.all(promisesURl).then(async (poke) => {
-        const newJson = [];
+        //Array principal que contendra los arrays internos de objetos filtrados.
+        let mainArray = [];
+
+        //Array interno que contendra los objetos filtrados.
+        let internalArray = [];
 
         poke.forEach((pokemon) => {
-          newJson.push({
+          mainArray.push({
             name: pokemon.data.name,
             image:
               pokemon.data.sprites.other["official-artwork"]["front_default"],
@@ -51,7 +55,7 @@ async function filterPokemon(req, res) {
         });
 
         //En esta parte filtramos los pokemons por el tipo recibido por query.
-        const newFilter = newJson.filter(
+        const newFilter = mainArray.filter(
           (ty) => ty.types[0] === type || ty.types[1] === type
         );
 
@@ -78,7 +82,29 @@ async function filterPokemon(req, res) {
           });
         }
 
-        res.status(200).json(newFilter);
+        //Reseta el mainArray para poder guardar los internal arrays.
+        mainArray = [];
+
+        //La longitud maxima permitida del internal Array.
+        const maxObjectPerArray = 12;
+
+        /*El numero resultante de la division de la longitud maxima con la longitud del array de objetos 
+        filtrados. */
+        const numArrays = Math.ceil(newFilter.length / maxObjectPerArray);
+
+        //Recorremos el array filtrado para poder pushear cada objeto al internalArray.
+        newFilter.forEach((element) => {
+          internalArray.push(element);
+
+          /*Si la longitud del internalArray es igual al resultado de la division anterior, este se pushea
+          al Array Principal y el internal Array se resetea a para seguir a la siguiente vuelta. */
+          if (internalArray.length === numArrays) {
+            mainArray.push(internalArray);
+            internalArray = [];
+          }
+        });
+
+        res.status(200).json(mainArray);
       });
     }
   } catch (error) {
@@ -88,3 +114,5 @@ async function filterPokemon(req, res) {
 }
 
 module.exports = filterPokemon;
+
+// [[{},{},{},{},{},{},{},{},{},{},{},{}], [{},{},{},{},{},{},{},{},{},{},{},{}]]
