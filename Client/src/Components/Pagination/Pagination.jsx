@@ -16,25 +16,34 @@ export function Pagination({
   nextPageFilterPokemon,
   prevPageFilterPokemon,
 }) {
+  function handleNext() {
+    if (
+      filtersAndSorting.is_filter_on === true ||
+      filtersAndSorting.is_sorting_on === true
+    ) {
+      nextPageFilterPokemon();
+    } else {
+      updateCards(true);
+    }
+  }
+
+  function handlePrev() {
+    if (
+      filtersAndSorting.is_filter_on === true ||
+      filtersAndSorting.is_sorting_on === true
+    ) {
+      prevPageFilterPokemon();
+    } else {
+      updateCards(false);
+    }
+  }
   return (
     <div className={styles.paginationContainer}>
-      <button
-        onClick={() => {
-          filtersAndSorting.is_filter_on === true
-            ? prevPageFilterPokemon()
-            : updateCards(false);
-        }}
-        className={styles.paginationButton}>
+      <button onClick={handlePrev} className={styles.paginationButton}>
         <span className="material-symbols-outlined">arrow_back_ios_new</span>
       </button>
 
-      <button
-        onClick={() => {
-          filtersAndSorting.is_filter_on === true
-            ? nextPageFilterPokemon()
-            : updateCards(true);
-        }}
-        className={styles.paginationButton}>
+      <button onClick={handleNext} className={styles.paginationButton}>
         <span className="material-symbols-outlined">arrow_forward_ios</span>
       </button>
     </div>

@@ -6,6 +6,7 @@ import {
   GET_POKEMON_TYPES,
   FILTER_SORTING_ACTIVATE,
   FILTER_POKEMON,
+  SORT_POKEMON,
   FILTER_POKEMON_NEXT,
   FILTER_POKEMON_PREV,
 } from "./types";
@@ -79,6 +80,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
         },
       };
     case FILTER_POKEMON:
+      return {
+        ...state,
+        pokemons: [],
+        pokemonsFilter: payload,
+        pokemonsFilterIndex: 0,
+      };
+    case SORT_POKEMON:
       return {
         ...state,
         pokemons: [],

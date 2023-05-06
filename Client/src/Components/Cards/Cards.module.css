@@ -2,6 +2,12 @@ article {
   padding: 8em;
 }
 
+span > img {
+  width: 100%;
+  max-width: 25px;
+  height: auto;
+}
+
 .cardContainer {
   padding: 5px;
   display: flex;

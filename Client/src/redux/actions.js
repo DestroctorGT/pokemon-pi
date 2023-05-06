@@ -5,6 +5,7 @@ import {
   GET_POKEMON_TYPES,
   FILTER_SORTING_ACTIVATE,
   FILTER_POKEMON,
+  SORT_POKEMON,
   FILTER_POKEMON_NEXT,
   FILTER_POKEMON_PREV,
 } from "./types";
@@ -92,5 +93,16 @@ export function nextPageFilterPokemon() {
 export function prevPageFilterPokemon() {
   return {
     type: FILTER_POKEMON_PREV,
+  };
+}
+
+//Funcion encargada de ordenar los pokemons por ataque y nombre. Tanto ascendente o descendente.
+export function sortPokemons(order, type) {
+  return async function (dispatch) {
+    let { data } = await axios(
+      `http://localhost:3001/sortPokemons?order=${order}&type=${type}`
+    );
+
+    return dispatch({ type: SORT_POKEMON, payload: data });
   };
 }

@@ -2,9 +2,12 @@ import React from "react";
 import styles from "../Cards/Cards.module.css";
 import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination";
+import descendingSortIMG from "../../Assets/descending-sort.png";
+import ascendingSortIMG from "../../Assets/ascending-sort.png";
 
-//Importamos useEffect para poder ejecutar el dispatch que nos trae los pokemons al iniciar la app.
-import { useEffect } from "react";
+/*Importamos useEffect para poder ejecutar el dispatch que nos trae los pokemons al iniciar la app.
+Y el useState para crear un estado local y validar los datos del form.*/
+import { useEffect, useState } from "react";
 
 //Importamos el objeto connect que nos ayuda a suscribirnos a redux
 import { connect } from "react-redux";
@@ -13,6 +16,7 @@ import {
   getPokemonTypes,
   filterSortingActivate,
   filterPokemon,
+  sortPokemons,
 } from "../../redux/actions";
 
 //El dispatch y el state lo recibe por props
@@ -25,6 +29,7 @@ export function Cards({
   filterSortingActivate,
   filtersAndSorting,
   filterPokemon,
+  sortPokemons,
   pokemonsFilterIndex,
 }) {
   /*Cuando el componente se monta, se ejecuta la funcion updateCards y getPokemonTypes
@@ -33,6 +38,12 @@ export function Cards({
     updateCards();
     getPokemonTypes();
   }, []);
+
+  //Estado local para validar los datos.
+  const [inputs, setInputs] = useState({
+    type: "name",
+    order: "A",
+  });
 
   //Funcion encargada de hacer dispatch al redux y filtrar los pokemons por tipo
   function handleFilter(e) {
@@ -59,6 +70,37 @@ export function Cards({
     updateCards();
   }
 
+  async function handleSort(e) {
+    let inputValue = e.target.value;
+
+    setInputs({
+      ...inputs,
+      type: inputValue,
+    });
+
+    sortPokemons(inputs.order, inputValue);
+  }
+
+  function handleOrder() {
+    if (inputs.order === "A") {
+      setInputs({
+        ...inputs,
+        order: "D",
+      });
+
+      sortPokemons("D", inputs.type);
+    }
+
+    if (inputs.order === "D") {
+      setInputs({
+        ...inputs,
+        order: "A",
+      });
+
+      sortPokemons("A", inputs.type);
+    }
+  }
+
   return (
     <article>
       <div className={styles.filterContainters}>
@@ -73,8 +115,13 @@ export function Cards({
         )}
 
         <div>
-          <select name="filter" onChange={handleFilter}>
+          <select
+            name="filter"
+            onChange={handleFilter}
+            disabled={!filtersAndSorting.is_filter_on}>
             {/*Mapeamos el json pokemonTypes para renderizar etiquetas option*/}
+
+            <option value="DEFAULT">Select Filter</option>
 
             {pokemonsTypes &&
               pokemonsTypes.map((element, index) => {
@@ -92,8 +139,33 @@ export function Cards({
         )}
 
         <div>
-          <select name="order"></select>
+          <select
+            name="order"
+            disabled={!filtersAndSorting.is_sorting_on}
+            onChange={handleSort}>
+            <option value="DEFAULT">Select Order</option>
+
+            <option value="name">NAME</option>
+            <option value="attack">Attack</option>
+          </select>
         </div>
+        {inputs.order === "A" ? (
+          <button
+            onClick={handleOrder}
+            disabled={!filtersAndSorting.is_sorting_on}>
+            <span>
+              <img src={ascendingSortIMG} alt="Ascending sort" />
+            </span>
+          </button>
+        ) : (
+          <button
+            onClick={handleOrder}
+            disabled={!filtersAndSorting.is_sorting_on}>
+            <span>
+              <img src={descendingSortIMG} alt="descending sort" />
+            </span>
+          </button>
+        )}
       </div>
 
       <div className={styles.cardContainer}>
@@ -145,6 +217,7 @@ export function mapDispatch(dispatch) {
     getPokemonTypes: () => dispatch(getPokemonTypes()),
     filterSortingActivate: (str) => dispatch(filterSortingActivate(str)),
     filterPokemon: (type) => dispatch(filterPokemon(type)),
+    sortPokemons: (order, type) => dispatch(sortPokemons(order, type)),
   };
 }
 
