@@ -168,6 +168,8 @@ export function Cards({
         )}
       </div>
 
+      <Pagination></Pagination>
+
       <div className={styles.cardContainer}>
         {/* mapeamos el array pokemons para renderizar un componente Card y por props le enviamos su data */}
         {pokemons &&
@@ -194,7 +196,6 @@ export function Cards({
             );
           })}
       </div>
-      <Pagination></Pagination>
     </article>
   );
 }

@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 export default function Card({ id, name, image, types }) {
   return (
     <div className={styles.card}>
-      <Link to={`/detail/${id}`}>
+      <Link className={styles.link} to={`/detail/${id}`}>
         <img src={image} alt="pokemon card pic" />
         <h2>{name}</h2>
         <div className={styles.typeCardContainer}>
