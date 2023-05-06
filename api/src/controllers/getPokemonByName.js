@@ -28,7 +28,16 @@ async function getPokemonByName(req, res) {
     //recorremos el json que nos devuelve la db y pusheamos los objetos al array newPokemons.
     if (pokemonDB.length > 0) {
       pokemonDB.forEach((element) => {
-        newPokemons.push(element);
+        newPokemons.push({
+          name: element.name,
+          image: element.image,
+
+          /*Mapeamos el array types recibido en el json para guardar solo la propiedad name.
+            Ej: ['fire', 'normal'] */
+          types: element.Types.map((ty) => {
+            return ty.name;
+          }),
+        });
       });
     } else {
       //Si no existe el pokemon en la db, se trae el pokemon de la API por NAME.
