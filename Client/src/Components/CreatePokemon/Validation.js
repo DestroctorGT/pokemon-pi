@@ -3,6 +3,14 @@ let error = {};
 
 //Funcion encargada de validar los inputs del form.
 export default function validateInputs(pokemonData) {
+  if (pokemonData.name === "name") {
+    if (pokemonData.value.length <= 0) {
+      error.name = "El campo no puede estar vacio";
+    } else {
+      delete error.name;
+    }
+  }
+
   if (pokemonData.name === "health") {
     if (Number(pokemonData.value) <= 0) {
       error.health = "El minimo tiene que ser 1";

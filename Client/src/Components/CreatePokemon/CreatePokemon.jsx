@@ -35,9 +35,9 @@ export function CreatePokemon({ pokemonsTypes, getPokemonTypes }) {
   const [inputs, setInputs] = useState({
     name: "",
     image: "",
-    health: 1,
-    attack: 1,
-    defense: 1,
+    health: undefined,
+    attack: undefined,
+    defense: undefined,
     type1: [],
     type2: [],
     showText: false,
@@ -104,6 +104,7 @@ export function CreatePokemon({ pokemonsTypes, getPokemonTypes }) {
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
       {inputs.showText === true ? <h3>Pokemon was created</h3> : null}
+
       <input
         type="text"
         name="name"
@@ -134,7 +135,10 @@ export function CreatePokemon({ pokemonsTypes, getPokemonTypes }) {
         </select>
 
         <label>Type: </label>
-        <select name="type2" onChange={handleInput}>
+        <select
+          name="type2"
+          onChange={handleInput}
+          disabled={!inputs.type1.length > 0}>
           {/*Mapeamos el json pokemonTypes para renderizar etiquetas option*/}
 
           {pokemonsTypes &&
@@ -174,7 +178,7 @@ export function CreatePokemon({ pokemonsTypes, getPokemonTypes }) {
       <button
         type="submit"
         className={
-          Object.keys(inputs.error).length > 0
+          Object.keys(inputs.error).length > 0 || inputs.name === ""
             ? styles.disableButton
             : styles.displayButton
         }>
