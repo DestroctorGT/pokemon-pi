@@ -42,6 +42,7 @@ async function filterPokemon(req, res) {
 
         poke.forEach((pokemon) => {
           mainArray.push({
+            id: pokemon.data.id,
             name: pokemon.data.name,
             image:
               pokemon.data.sprites.other["official-artwork"]["front_default"],
@@ -79,6 +80,7 @@ async function filterPokemon(req, res) {
         if (pokemonDB.length > 0) {
           pokemonDB.forEach((element) => {
             newFilter.push({
+              id: element.id,
               name: element.name,
               image: element.image,
 

@@ -26,8 +26,12 @@ async function getPokemonById(req, res) {
 
       //Se sobreescribe el objeto que declaramos anteriormente con la info recibida en la DB.
       pokemonDetail = {
+        id: pokemonTemporal.id,
         name: pokemonTemporal.name,
         image: pokemonTemporal.image,
+        life: pokemonTemporal.life,
+        attack: pokemonTemporal.attack,
+        defense: pokemonTemporal.defense,
 
         /*Mapeamos el array types recibido en el json para guardar solo la propiedad name.
             Ej: ['fire', 'normal'] */

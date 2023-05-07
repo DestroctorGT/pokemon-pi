@@ -45,6 +45,7 @@ async function sortPokemons(req, res) {
 
         poke.forEach((pokemon) => {
           mainArray.push({
+            id: pokemon.data.id,
             name: pokemon.data.name,
 
             image:
@@ -77,6 +78,7 @@ async function sortPokemons(req, res) {
         if (pokemonDB.length > 0) {
           pokemonDB.forEach((element) => {
             mainArray.push({
+              id: element.id,
               name: element.name,
               image: element.image,
 
