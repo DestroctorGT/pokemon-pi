@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/home" element={<Cards />}></Route>
         <Route path="/create" element={<CreatePokemon />}></Route>
-        <Route path="/detail" element={<Detail />}></Route>
+        <Route path="/detail/:id" element={<Detail />}></Route>
       </Routes>
       <footer>
         Made with ❤️ by{" "}

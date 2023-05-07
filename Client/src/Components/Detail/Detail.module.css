@@ -1,0 +1,32 @@
+.cardContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background-color: #faaca8;
+  background-image: linear-gradient(19deg, #faaca8 0%, #ddd6f3 100%);
+  border-radius: 15px;
+  box-shadow: 15px 15px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+}
+
+.card:hover {
+  transform: scale(1.2);
+}
+
+.typeCardContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.typeCard {
+  margin: 10px;
+  padding: 5px;
+  border: 2px solid white;
+  border-radius: 8px;
+  text-align: center;
+}
