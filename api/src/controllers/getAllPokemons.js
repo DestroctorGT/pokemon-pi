@@ -66,7 +66,16 @@ async function getAllPokemons(req, res) {
           //Si los encuentra, los pushea al array newJson.
           if (pokemonDB.length > 0) {
             pokemonDB.forEach((element) => {
-              newJSON.push(element);
+              newJSON.push({
+                name: element.name,
+                image: element.image,
+
+                /*Mapeamos el array types recibido en el json para guardar solo la propiedad name.
+                  Ej: ['fire', 'normal'] */
+                types: element.Types.map((ty) => {
+                  return ty.name;
+                }),
+              });
             });
           }
         }

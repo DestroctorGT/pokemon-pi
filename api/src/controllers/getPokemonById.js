@@ -16,13 +16,25 @@ async function getPokemonById(req, res) {
     //Si la longitud del ID es mayor a 4, se busca en la db. De lo contrario se busca en la api.
     if (id.length > 4) {
       //Usamos el metodo findByPk que nos ayuda a buscar el pokemon por su ID.
-      pokemonDetail = await Pokemon.findByPk(id, {
+      let pokemonTemporal = await Pokemon.findByPk(id, {
         //La propieda include nos trae la info de la relacion PokemonTypes
         include: {
           model: Type,
           attributes: ["name"], //usamos la propiedad attributes para que solo nos traiga el name y no el ID
         },
       });
+
+      //Se sobreescribe el objeto que declaramos anteriormente con la info recibida en la DB.
+      pokemonDetail = {
+        name: pokemonTemporal.name,
+        image: pokemonTemporal.image,
+
+        /*Mapeamos el array types recibido en el json para guardar solo la propiedad name.
+            Ej: ['fire', 'normal'] */
+        types: pokemonTemporal.Types.map((ty) => {
+          return ty.name;
+        }),
+      };
     } else {
       //Se trae el pokemon de la API por ID.
       const { data } = await axios(`https://pokeapi.co/api/v2/pokemon/${id}`);
