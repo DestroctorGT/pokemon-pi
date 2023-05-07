@@ -95,15 +95,25 @@ const rootReducer = (state = initialState, { type, payload }) => {
       };
 
     case FILTER_POKEMON_NEXT:
+      /*Se pregunta si la longitud del array que sigue es mayor a 0, si lo es entonces se suma, de lo
+      contrario no.*/
+      if (state.pokemonsFilter[state.pokemonsFilterIndex + 1]?.length > 0) {
+        state.pokemonsFilterIndex += 1;
+      }
       return {
         ...state,
-        pokemonsFilterIndex: state.pokemonsFilterIndex + 1,
+        pokemonsFilterIndex: state.pokemonsFilterIndex,
       };
 
     case FILTER_POKEMON_PREV:
+      /*Se pregunta si la longitud del array que sigue es mayor a 0, si lo es entonces se resta, de lo
+      contrario no se resta.*/
+      if (state.pokemonsFilter[state.pokemonsFilterIndex - 1]?.length > 0) {
+        state.pokemonsFilterIndex -= 1;
+      }
       return {
         ...state,
-        pokemonsFilterIndex: state.pokemonsFilterIndex - 1,
+        pokemonsFilterIndex: state.pokemonsFilterIndex,
       };
 
     default:
