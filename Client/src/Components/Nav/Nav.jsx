@@ -30,6 +30,15 @@ export function Nav({ addByName, updateCards }) {
     setInputValue(e.target.value);
   }
 
+  //Funcion encargada de hacer dispatch a redux para buscar al pokemon
+  function handleSearch(e) {
+    e.preventDefault();
+
+    addByName(inputValue);
+
+    setInputValue("");
+  }
+
   return (
     <nav>
       <ul className={styles.navBar}>
@@ -40,16 +49,18 @@ export function Nav({ addByName, updateCards }) {
         </li>
 
         <li>
-          <div
+          <form
             className={
               location.pathname === "/home"
                 ? styles.searchBarContainer
                 : styles.disableSearchBar
-            }>
+            }
+            onSubmit={handleSearch}>
             <input
               onChange={handleChange}
               type="text"
               placeholder="Search"
+              value={inputValue}
               className={styles.searchBarInput}></input>
 
             <input
@@ -57,9 +68,8 @@ export function Nav({ addByName, updateCards }) {
               type="image"
               src={pokeballInput}
               alt="search bar button input"
-              onClick={() => addByName(inputValue)}
             />
-          </div>
+          </form>
         </li>
 
         <li
