@@ -76,7 +76,7 @@ export function CreatePokemon({ pokemonsTypes, getPokemonTypes }) {
       life: inputs.health,
       attack: inputs.attack,
       defense: inputs.defense,
-      types: [inputs.type1[0], inputs.type2[0]],
+      types: [inputs.type1, inputs.type2],
     };
 
     //Hacemos el post a la db pasando el objeto por body.
@@ -89,6 +89,8 @@ export function CreatePokemon({ pokemonsTypes, getPokemonTypes }) {
       health: 1,
       attack: 1,
       defense: 1,
+      type1: [],
+      type2: [],
       showText: true,
       error: {},
     });
