@@ -13,7 +13,7 @@ async function filterPokemon(req, res) {
     /*Se hace una peticion al endpoint que trae 150 pokemones.
     pero es un objeto que tiene una propiedad results (que es un array) y adentro de esta tiene {name, url} */
     const { data } = await axios(
-      "https://pokeapi.co/api/v2/pokemon?offset=0&limit=150"
+      "https://pokeapi.co/api/v2/pokemon?offset=0&limit=140"
     );
 
     /*se crea un array vacio para guardar todas las peticiones y posteriormente, realizarlas todas

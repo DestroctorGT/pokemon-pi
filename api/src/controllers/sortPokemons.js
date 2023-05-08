@@ -14,7 +14,7 @@ async function sortPokemons(req, res) {
     /*Se hace una peticion al endpoint que trae 100 pokemones.
     pero es un objeto que tiene una propiedad results (que es un array) y adentro de esta tiene {name, url} */
     const { data } = await axios(
-      "https://pokeapi.co/api/v2/pokemon?offset=0&limit=150"
+      "https://pokeapi.co/api/v2/pokemon?offset=0&limit=140"
     );
 
     /*se crea un array vacio para guardar todas las peticiones y posteriormente, realizarlas todas
@@ -98,7 +98,7 @@ async function sortPokemons(req, res) {
           newSort = mainArray.sort((a, b) => {
             //Si la orden enviada por query es A, se ordena Ascendente.
             if (order === "A") {
-              if (b.name > a.name) {
+              if (a.name < b.name) {
                 return -1;
               }
             }
@@ -110,9 +110,7 @@ async function sortPokemons(req, res) {
               }
             }
 
-            if (b.name > a.name) {
-              return -1;
-            }
+            return 1;
           });
 
           //Si el type enviado por query es attack, se ordera por ese tipo
