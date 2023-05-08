@@ -11,12 +11,10 @@ async function sortPokemons(req, res) {
     //La peticion recibe por query el type, encargado de elegir el tipo de filtrado.
     const { order, type } = req.query;
 
-    console.log(order);
-    console.log(type);
     /*Se hace una peticion al endpoint que trae 100 pokemones.
     pero es un objeto que tiene una propiedad results (que es un array) y adentro de esta tiene {name, url} */
     const { data } = await axios(
-      "https://pokeapi.co/api/v2/pokemon?offset=0&limit=100"
+      "https://pokeapi.co/api/v2/pokemon?offset=0&limit=150"
     );
 
     /*se crea un array vacio para guardar todas las peticiones y posteriormente, realizarlas todas
@@ -146,20 +144,19 @@ async function sortPokemons(req, res) {
         const maxObjectPerArray = 12;
 
         /*El numero resultante de la division de la longitud maxima con la longitud del array de objetos 
-        filtrados. */
+        ordenados. */
         const numArrays = Math.ceil(newSort.length / maxObjectPerArray);
 
-        //Recorremos el array filtrado para poder pushear cada objeto al internalArray.
-        newSort.forEach((element) => {
-          internalArray.push(element);
+        /*Hacemos un bucle for iniciando desde 0 hasta el numero resultante de la division entre 
+        la longitud del array ordenado y el numero maximo de objetos.*/
+        for (let i = 0; i < numArrays; i++) {
+          /*En cada iteracion, cortamos el array ordenado iniciando desde la posicion i multiplicado por 12
+          hasta la posicion i + 1 multiplicado por 12*/
 
-          /*Si la longitud del internalArray es igual al resultado de la division anterior, este se pushea
-          al Array Principal y el internal Array se resetea a para seguir a la siguiente vuelta. */
-          if (internalArray.length === numArrays) {
-            mainArray.push(internalArray);
-            internalArray = [];
-          }
-        });
+          internalArray = newSort.slice(i * 12, (i + 1) * 12);
+
+          mainArray.push(internalArray);
+        }
 
         res.status(200).json(mainArray);
       });
