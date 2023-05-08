@@ -63,7 +63,7 @@ async function sortPokemons(req, res) {
 
         //Se busca en la db todos los pokemons que se hayan creado.
         const pokemonDB = await Pokemon.findAll({
-          attributes: ["name", "image", "attack"],
+          attributes: ["id", "name", "image", "attack"],
 
           //La propiedad include nos trae la info de la relacion PokemonTypes
           include: {
@@ -81,6 +81,7 @@ async function sortPokemons(req, res) {
               id: element.id,
               name: element.name,
               image: element.image,
+              attack: element.attack,
 
               /*Mapeamos el array types recibido en el json para guardar solo la propiedad name.
                 Ej: ['fire', 'normal'] */

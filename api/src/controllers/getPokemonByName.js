@@ -16,7 +16,7 @@ async function getPokemonByName(req, res) {
       //Usamos el condicional where para que matchee con el name recibido por query.
       where: { name: name.toLowerCase() },
 
-      attributes: ["name", "image"],
+      attributes: ["id", "name", "image"],
 
       //La propiedad include nos trae la info de la relacion PokemonTypes
       include: {
@@ -29,6 +29,7 @@ async function getPokemonByName(req, res) {
     if (pokemonDB.length > 0) {
       pokemonDB.forEach((element) => {
         newPokemons.push({
+          id: element.id,
           name: element.name,
           image: element.image,
 
@@ -48,6 +49,7 @@ async function getPokemonByName(req, res) {
       //Si la respuesta devuelve una data, esta se pushea al array.
       if (Object.keys(data).length > 0) {
         newPokemons.push({
+          id: data.id,
           name: data.name,
           image: data.sprites.other["official-artwork"]["front_default"],
 
