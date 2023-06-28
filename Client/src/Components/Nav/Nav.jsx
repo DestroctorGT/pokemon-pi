@@ -1,3 +1,4 @@
+//core react
 import React from "react";
 
 //Importamos useState para crear un estado local para el valor del input
