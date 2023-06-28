@@ -3,7 +3,7 @@ import React from "react";
 //Importamos useState para crear un estado local para el valor del input
 import { useState } from "react";
 
-import Logo from "../../Assets/pokemonLogo.png";
+import Logo from "../../Assets/pokedexLogo.png";
 import pokeballInput from "../../Assets/pokeball-input.png";
 import styles from "../Nav/Nav.module.css";
 
@@ -48,20 +48,22 @@ export function Nav({ addByName, updateCards }) {
           </Link>
         </li>
 
-        <li>
+        <li style={location.pathname === "/" ? null : styles.showForm}>
           <form
             className={
               location.pathname === "/home"
                 ? styles.searchBarContainer
                 : styles.disableSearchBar
             }
-            onSubmit={handleSearch}>
+            onSubmit={handleSearch}
+          >
             <input
               onChange={handleChange}
               type="text"
               placeholder="Search"
               value={inputValue}
-              className={styles.searchBarInput}></input>
+              className={styles.searchBarInput}
+            ></input>
 
             <input
               className={styles.searchBarButton}
@@ -77,7 +79,8 @@ export function Nav({ addByName, updateCards }) {
             location.pathname === "/home"
               ? styles.createButton
               : styles.disableCreateButton
-          }>
+          }
+        >
           <Link to="/create">
             <button>Create Pokemon</button>
           </Link>
