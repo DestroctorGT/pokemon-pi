@@ -2,8 +2,6 @@ import React from "react";
 import styles from "../Cards/Cards.module.css";
 import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination";
-import descendingSortIMG from "../../Assets/descending-sort.png";
-import ascendingSortIMG from "../../Assets/ascending-sort.png";
 
 /*Importamos useEffect para poder ejecutar el dispatch que nos trae los pokemons al iniciar la app.
 Y el useState para crear un estado local y validar los datos del form.*/
@@ -118,7 +116,8 @@ export function Cards({
           <select
             name="filter"
             onChange={handleFilter}
-            disabled={!filtersAndSorting.is_filter_on}>
+            disabled={!filtersAndSorting.is_filter_on}
+          >
             {/*Mapeamos el json pokemonTypes para renderizar etiquetas option*/}
 
             <option value="DEFAULT">Select Filter</option>
@@ -142,7 +141,8 @@ export function Cards({
           <select
             name="order"
             disabled={!filtersAndSorting.is_sorting_on}
-            onChange={handleSort}>
+            onChange={handleSort}
+          >
             <option value="DEFAULT">Select Order</option>
 
             <option value="name">NAME</option>
@@ -152,19 +152,13 @@ export function Cards({
         {inputs.order === "A" ? (
           <button
             onClick={handleOrder}
-            disabled={!filtersAndSorting.is_sorting_on}>
-            <span>
-              <img src={ascendingSortIMG} alt="Ascending sort" />
-            </span>
-          </button>
+            disabled={!filtersAndSorting.is_sorting_on}
+          ></button>
         ) : (
           <button
             onClick={handleOrder}
-            disabled={!filtersAndSorting.is_sorting_on}>
-            <span>
-              <img src={descendingSortIMG} alt="descending sort" />
-            </span>
-          </button>
+            disabled={!filtersAndSorting.is_sorting_on}
+          ></button>
         )}
       </div>
 
