@@ -49,19 +49,6 @@ label {
   cursor: pointer;
 }
 
-#inputsForm {
-  display: flex;
-  flex-flow: column;
-  align-items: start;
-  gap: 8px;
-}
-
-#buttonForm {
-  display: flex;
-  flex-flow: column;
-  gap: 15px;
-}
-
 .landingPage {
   margin: 5px;
   padding: 25px;
@@ -72,26 +59,32 @@ label {
   gap: 25px;
 }
 
-.logo {
-  width: 100%;
-  max-width: 450px;
-  height: auto;
+#inputsForm {
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  gap: 8px;
 }
 
-.buttonLanding {
-  margin: 5px;
-  padding: 8px;
-  border-style: none;
-  border-radius: 10px;
-  background-color: #ffb703;
-  text-transform: capitalize;
-  font-size: large;
-  font-weight: 300;
+#inputsForm > div {
+  height: 30px;
+}
+
+#buttonForm {
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+}
+
+#passwordButton {
+  border: 0;
+  background-color: transparent;
+  position: relative;
+  bottom: 3vh;
+  left: 9vh;
   cursor: pointer;
-  transition: 0.2s;
 }
 
-.buttonLanding:hover {
-  transition: 0.2s;
-  border: 4px groove red;
-}
+
+
+
