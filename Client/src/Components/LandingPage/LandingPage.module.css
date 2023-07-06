@@ -5,6 +5,12 @@ h1 {
   color: white;
 }
 
+section > img {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+}
+
 article > img {
   width: 100%;
   height: auto;
@@ -85,6 +91,29 @@ label {
   cursor: pointer;
 }
 
+#pokemonLandingImg {
+  display: none;
+}
 
+@media only screen and (min-width: 1025px) {
 
+  .registerForm {
+    margin: 2%;
+    padding: 5%;
+  }
 
+  .landingPage {
+    display: flex;
+    flex-flow: row;
+  }
+
+  #passwordButton {
+    position: relative;
+    bottom: 2.5vh;
+    left: 8vh;
+  }
+
+  #pokemonLandingImg {
+    display: block;
+  }
+}
