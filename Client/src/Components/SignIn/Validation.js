@@ -1,8 +1,6 @@
 //Creamos un objeto llamado error
 let error = {};
 
-let passwordRight = "";
-
 //Funcion encargada de validar los inputs del form.
 export default function validateInputs(userData) {
   const regexEmail =
@@ -23,16 +21,7 @@ export default function validateInputs(userData) {
       error.password =
         "- at least 8 characters - at least 8 characters - must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number - Can contain special characters";
     } else {
-      passwordRight = userData.value;
       delete error.password;
-    }
-  }
-
-  if (userData.name === "confirmPassword") {
-    if (passwordRight !== userData.value) {
-      error.confirmP = `Password doesn't match`;
-    } else {
-      delete error.confirmP;
     }
   }
 

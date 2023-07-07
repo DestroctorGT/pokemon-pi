@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../LandingPage/LandingPage.module.css";
+import styles from "../SignUp/SignUp.module.css";
 import pokemonLanding from "../../Assets/pokemonimg2.webp";
 import { Link } from "react-router-dom";
 import { IconEye, IconEyeClosed } from "@tabler/icons-react";
@@ -112,7 +112,7 @@ export default function SignUp() {
 
         <div id={styles.buttonForm}>
           <button type="submit" className={styles.registerFormButton}>
-            sign in
+            sign up
           </button>
 
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
