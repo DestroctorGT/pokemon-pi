@@ -75,7 +75,10 @@ export default function SignUp() {
               value={inputs.password}
               onChange={handleInput}
             />
-            <button id={styles.passwordButton} onClick={switchIconPassword}>
+            <button
+              className={styles.passwordButton}
+              onClick={switchIconPassword}
+            >
               {!iconsPassword ? <IconEye /> : <IconEyeClosed />}
             </button>
           </div>
@@ -98,7 +101,10 @@ export default function SignUp() {
               value={inputs.confirmPassword}
               onChange={handleInput}
             />
-            <button id={styles.passwordButton} onClick={switchIconConfirmP}>
+            <button
+              className={styles.passwordButton}
+              onClick={switchIconConfirmP}
+            >
               {!iconsConfirmP ? <IconEye /> : <IconEyeClosed />}
             </button>
           </div>
@@ -117,7 +123,7 @@ export default function SignUp() {
 
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <p>Already have an account?</p>
-            <Link to={"/signIn"}>Sign In</Link>
+            <Link to={"/?to=signIn"}>Sign In</Link>
           </div>
         </div>
       </form>

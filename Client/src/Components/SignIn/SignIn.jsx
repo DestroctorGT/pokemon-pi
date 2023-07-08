@@ -87,7 +87,14 @@ export default function SignIn() {
 
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <p>Don't have an account?</p>
-            <Link to={"/signUp"}>Sign Up</Link>
+            <Link
+              to={{
+                pathname: "/",
+                search: "?to=signUp",
+              }}
+            >
+              Sign Up
+            </Link>
           </div>
         </div>
       </form>
