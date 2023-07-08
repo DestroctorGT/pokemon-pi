@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className={location.pathname === "/" ? "App" : "Home"}>
-      <Nav></Nav>
+      {location.pathname === "/" ? null : <Nav></Nav>}
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/home" element={<Cards />}></Route>
