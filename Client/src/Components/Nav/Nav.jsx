@@ -5,8 +5,8 @@ import React from "react";
 import { useState } from "react";
 
 import Logo from "../../Assets/pokedexLogo.png";
-import pokeballInput from "../../Assets/pokeball-input.png";
 import styles from "../Nav/Nav.module.css";
+import { IconPlus, IconSearch, IconHeart } from "@tabler/icons-react";
 
 /*Importamos el objeto Link para poder redirigir la pagina a determinada ruta.
 Y tambien el objeto useLocation para saber en cual ruta nos encontramos mientras navegamos por la app.
@@ -44,47 +44,29 @@ export function Nav({ addByName, updateCards }) {
     <nav>
       <ul className={styles.navBar}>
         <li>
-          <Link to="/">
+          <Link to="/home">
             <img src={Logo} alt="pokemon logo" className={styles.logo} />
           </Link>
         </li>
 
-        <li style={location.pathname === "/" ? null : styles.showForm}>
-          <form
-            className={
-              location.pathname === "/home"
-                ? styles.searchBarContainer
-                : styles.disableSearchBar
-            }
-            onSubmit={handleSearch}
-          >
-            <input
-              onChange={handleChange}
-              type="text"
-              placeholder="Search"
-              value={inputValue}
-              className={styles.searchBarInput}
-            ></input>
-
-            <input
-              className={styles.searchBarButton}
-              type="image"
-              src={pokeballInput}
-              alt="search bar button input"
-            />
-          </form>
-        </li>
-
-        <li
-          id={
-            location.pathname === "/home"
-              ? styles.createButton
-              : styles.disableCreateButton
-          }
-        >
-          <Link to="/create">
-            <button>Create Pokemon</button>
-          </Link>
+        <li>
+          <ul className={styles.navButtons}>
+            <li>
+              <button>
+                <IconPlus stroke={3} />
+              </button>
+            </li>
+            <li>
+              <button>
+                <IconSearch stroke={3} />
+              </button>
+            </li>
+            <li>
+              <button>
+                <IconHeart stroke={3} />
+              </button>
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>

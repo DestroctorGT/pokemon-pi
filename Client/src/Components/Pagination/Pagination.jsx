@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../Pagination/Pagination.module.css";
+import { IconChevronRight, IconChevronLeft } from "@tabler/icons-react";
 
 //Importamos el objeto connect que nos ayuda a suscribirnos a redux
 import { connect } from "react-redux";
@@ -40,11 +41,11 @@ export function Pagination({
   return (
     <div className={styles.paginationContainer}>
       <button onClick={handlePrev} className={styles.paginationButton}>
-        <span className="material-symbols-outlined">arrow_back_ios_new</span>
+        <IconChevronLeft color="yellow" stroke={4} />
       </button>
 
       <button onClick={handleNext} className={styles.paginationButton}>
-        <span className="material-symbols-outlined">arrow_forward_ios</span>
+        <IconChevronRight color="yellow" stroke={4} />
       </button>
     </div>
   );

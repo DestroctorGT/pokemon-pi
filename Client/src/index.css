@@ -1,3 +1,7 @@
+:root {
+  --bodyColor: radial-gradient(circle, hsla(46, 95%, 56%, 1) 0%, hsla(350, 97%, 65%, 1) 100%);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -8,7 +12,7 @@ body {
 
   text-align: center;
 
-  background: radial-gradient(circle, hsla(46, 95%, 56%, 1) 0%, hsla(350, 97%, 65%, 1) 100%);
+  background: var(--bodyColor);
 }
 
 code {
