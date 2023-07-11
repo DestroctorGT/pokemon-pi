@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "../Detail/Detail.module.css";
+import { IconEdit, IconTrash } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
 
 export default function Detail() {
   let { id } = useParams();
@@ -23,22 +25,64 @@ export default function Detail() {
     return setPokemon({});
   }, [id]);
   return (
-    <article className={styles.cardContainter}>
+    <article className={styles.cardContainer}>
       <div className={styles.card}>
-        <h1>{pokemon.id}</h1>
+        <ul className={styles.editContainer}>
+          <li>
+            <button>
+              <IconEdit />
+            </button>
+          </li>
+          <li>
+            <h2>#{pokemon.id}</h2>
+          </li>
+          <li>
+            <button>
+              <IconTrash />
+            </button>
+          </li>
+        </ul>
         <img src={pokemon.image} alt="pokemon card pic" />
         <h2>{pokemon.name}</h2>
-        <p>{pokemon.life}</p>
-        <p>{pokemon.attack}</p>
-        <p>{pokemon.defense}</p>
+        <div className={styles.typeCardContainer}>
+          <div className={styles.typeCard}>
+            <p
+              style={{
+                fontSize: "medium",
+                fontWeight: "bold",
+                cursor: "default",
+              }}
+            >
+              ⚔️ {pokemon.attack}
+            </p>
+          </div>
+          <div className={styles.typeCard}>
+            <p
+              style={{
+                fontSize: "medium",
+                fontWeight: "bold",
+                cursor: "default",
+              }}
+            >
+              🛡️ {pokemon.defense}
+            </p>
+          </div>
+        </div>
         <div className={styles.typeCardContainer}>
           {/*Mapeamos el array types que recibimos por props para renderizarlos en un div*/}
           {pokemon.types &&
             pokemon.types.map((type, index) => {
               return (
                 <div className={styles.typeCard} key={index}>
-                  <h2>type</h2>
-                  <p>{type}</p>
+                  <p
+                    style={{
+                      fontSize: "medium",
+                      fontWeight: "bold",
+                      cursor: "default",
+                    }}
+                  >
+                    {type}
+                  </p>
                 </div>
               );
             })}
