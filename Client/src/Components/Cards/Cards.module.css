@@ -10,6 +10,11 @@ article > button {
   border: 0;
   cursor: pointer;
   border-radius: 8px;
+  transition: 0.2s;
+}
+
+article > button:hover {
+  transform: scale(1.2);
 }
 
 span > img {

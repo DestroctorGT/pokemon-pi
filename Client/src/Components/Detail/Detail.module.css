@@ -48,7 +48,13 @@ img {
   border: 0;
   cursor: pointer;
   border-radius: 8px;
+  transition: .2s;
 }
+
+.editContainer > li > button:hover {
+  transform: scale(1.2);
+}
+
 
 @media only screen and (min-width: 1025px) {
 
