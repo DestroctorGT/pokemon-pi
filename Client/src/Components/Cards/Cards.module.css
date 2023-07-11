@@ -35,3 +35,12 @@ span > img {
   justify-content: center;
   gap: 15px;
 }
+
+@media only screen and (min-width: 1025px) {
+
+  article > button {
+    position: relative;
+    top: 50px;
+    left: 500px;
+  }
+}

@@ -18,7 +18,6 @@ export default function Card({ id, name, image, types }) {
             types.map((type, index) => {
               return (
                 <div className={styles.typeCard} key={index}>
-                  <h2>type</h2>
                   <p>{type}</p>
                 </div>
               );
