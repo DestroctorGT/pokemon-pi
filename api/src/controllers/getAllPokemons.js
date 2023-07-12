@@ -12,7 +12,7 @@ async function getAllPokemons(req, res) {
     /*se hace una peticion get al endpoint que trae los 12 primeros pokemones
     pero es un objeto que tiene una propiedad results (que es un array) y adentro de esta tiene {name, url} */
     const { data } = await axios(
-      `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=12`
+      `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=9`
     );
 
     /*se crea un array vacio para guardar todas las peticiones y posteriormente, realizarlas todas
