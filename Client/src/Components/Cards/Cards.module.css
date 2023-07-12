@@ -3,13 +3,14 @@ article {
 }
 
 article > button {
-  position: relative;
-  top: 50px;
-  left: 150px;
+  position: fixed;
+  bottom: 20px; /* Ajusta la distancia desde la parte inferior de la pantalla */
+  right: 20px; /* Ajusta la distancia desde el lado derecho de la pantalla */
   background-color: #FFE53B;
   border: 0;
   cursor: pointer;
   border-radius: 8px;
+  border: 2px solid black;
   transition: 0.2s;
 }
 
@@ -39,13 +40,4 @@ span > img {
   align-items: center;
   justify-content: center;
   gap: 15px;
-}
-
-@media only screen and (min-width: 1025px) {
-
-  article > button {
-    position: relative;
-    top: 50px;
-    left: 500px;
-  }
 }

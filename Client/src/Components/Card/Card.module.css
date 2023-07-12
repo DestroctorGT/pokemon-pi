@@ -18,7 +18,11 @@ p {
 }
 
 .card {
-  padding: 1% 40%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: start;
+  justify-content: center;
+  padding: 5% 60%;
   border-radius: 15px;
   box-shadow: 15px 15px 15px -3px rgba(0, 0, 0, 0.1);
   transition: 0.5s;
