@@ -18,7 +18,7 @@ p {
 }
 
 .card {
-  padding: 5% 60%;
+  padding: 5% 5%;
   display: flex;
   flex-flow: column wrap;
   align-items: start;
