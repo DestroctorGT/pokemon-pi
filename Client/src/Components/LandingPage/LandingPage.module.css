@@ -1,0 +1,50 @@
+section {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+section > img {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.container > button {
+    padding: 10px;
+    background-color: #FFE53B;
+    border: 0;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 2px solid black;
+    font-weight: bold;
+    font-size: large;
+    text-transform: capitalize;
+    transition: 0.2s;
+}
+
+.container > button:hover {
+    transform: scale(1.2);
+}
+
+#pokemonLandingImg {
+    display: none;
+}
+
+@media only screen and (min-width: 1025px) {
+  
+    #pokemonLandingImg {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 350px;
+    }
+  }

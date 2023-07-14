@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../Card/Card.module.css";
 import pokeColors from "../../pokemonColors.js";
-import { IconHeart, IconHeartFilled } from "@tabler/icons-react";
 
 /*Importamos el objeto Link para poder redirigir la pagina a determinada ruta.
  */
@@ -18,7 +17,6 @@ export default function Card({ id, name, image, types }) {
       className={styles.card}
       style={{ backgroundColor: pokeColors[pokeCol].toString() }}
     >
-      <IconHeart />
       <Link className={styles.link} to={`/detail/${id}`}>
         <img src={image} alt="pokemon card pic" />
         <h2>{name}</h2>

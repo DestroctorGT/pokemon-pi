@@ -61,11 +61,6 @@ export function Nav({ addByName, updateCards }) {
                 <IconSearch stroke={3} />
               </button>
             </li>
-            <li>
-              <button>
-                <IconHeart stroke={3} />
-              </button>
-            </li>
           </ul>
         </li>
       </ul>
