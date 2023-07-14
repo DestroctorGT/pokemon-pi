@@ -12,7 +12,6 @@ const typePokemon = require("./models/typePokemon");
 /*Creamos una nueva clase llamada sequelize y como primer argumento pasamos nuestras credenciales 
 de postgres junto con el nombre de nuestra base de datos. */
 
-
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@:${DB_HOST}/pokemon`,
   { logging: false } //Lo seteamos en false para desactivar la info que nos sale al levantar el server.
@@ -30,8 +29,6 @@ const { Pokemon, Type } = sequelize.models;
 //Creamos la relacion N:N
 Pokemon.belongsToMany(Type, { through: "PokemonTypes" });
 Type.belongsToMany(Pokemon, { through: "PokemonTypes" });
-
-
 
 //exportamos la clase sequelize que acabamos de crear junto con sus models.
 module.exports = {

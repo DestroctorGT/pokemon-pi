@@ -10,7 +10,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className={location.pathname === "/" ? "App" : "Home"}>
+    <div>
       {location.pathname === "/" ? null : <Nav></Nav>}
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>

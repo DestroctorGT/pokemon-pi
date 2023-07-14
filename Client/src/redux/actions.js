@@ -26,11 +26,11 @@ export function updateCards(addOrDecrease) {
   }
 
   if (addOrDecrease === true && offset <= 1281) {
-    offset += 12;
+    offset += 9;
   }
 
   if (addOrDecrease === false) {
-    offset -= 12;
+    offset -= 9;
   }
   return async function (dispatch) {
     let { data } = await axios(

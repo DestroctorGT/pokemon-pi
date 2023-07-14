@@ -1,6 +1,6 @@
 .navBar {
   margin: 0;
-  padding: 1.2em;
+  padding: 1em;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,14 +13,25 @@
   height: auto;
 }
 
-.searchBarContainer {
+.navButtons {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  list-style-type: none;
   gap: 10px;
 }
 
-.disableSearchBar {
-  display: none;
+.navButtons > li > button {
+  background-color: #FFE53B;
+  border: 0;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 2px solid black;
+  transition: 0.2s;
+}
+
+.navButtons > li > button:hover {
+  transform: scale(1.2);
 }
 
 .searchBarInput {
@@ -36,10 +47,8 @@
   height: auto;
 }
 
-#createButton {
-  display: list-item;
-}
-
-#disableCreateButton {
-  display: none;
+.searchBarContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }

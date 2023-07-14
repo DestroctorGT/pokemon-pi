@@ -2,6 +2,8 @@ import React from "react";
 import styles from "../Cards/Cards.module.css";
 import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination";
+import setBodyColor from "../../setBodyColor";
+import { IconAdjustmentsHorizontal } from "@tabler/icons-react";
 
 /*Importamos useEffect para poder ejecutar el dispatch que nos trae los pokemons al iniciar la app.
 Y el useState para crear un estado local y validar los datos del form.*/
@@ -30,6 +32,8 @@ export function Cards({
   sortPokemons,
   pokemonsFilterIndex,
 }) {
+  setBodyColor({ color: "#F3E5AB" });
+
   /*Cuando el componente se monta, se ejecuta la funcion updateCards y getPokemonTypes
   encargada de traer los pokemons y los tipos*/
   useEffect(() => {
@@ -101,7 +105,7 @@ export function Cards({
 
   return (
     <article>
-      <div className={styles.filterContainters}>
+      {/* <div className={styles.filterContainters}>
         {filtersAndSorting.is_filter_on === false ? (
           <button onClick={handleFilterOn}>
             <span class="material-symbols-outlined">filter_alt_off</span>
@@ -118,8 +122,6 @@ export function Cards({
             onChange={handleFilter}
             disabled={!filtersAndSorting.is_filter_on}
           >
-            {/*Mapeamos el json pokemonTypes para renderizar etiquetas option*/}
-
             <option value="DEFAULT">Select Filter</option>
 
             {pokemonsTypes &&
@@ -160,9 +162,7 @@ export function Cards({
             disabled={!filtersAndSorting.is_sorting_on}
           ></button>
         )}
-      </div>
-
-      <Pagination></Pagination>
+      </div> */}
 
       <div className={styles.cardContainer}>
         {/* mapeamos el array pokemons para renderizar un componente Card y por props le enviamos su data */}
@@ -190,6 +190,12 @@ export function Cards({
             );
           })}
       </div>
+
+      <Pagination></Pagination>
+
+      <button>
+        <IconAdjustmentsHorizontal />
+      </button>
     </article>
   );
 }

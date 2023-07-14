@@ -21,9 +21,13 @@ import { connect } from "react-redux";
 //Nos traemos la action getPokemonTypes para hacer un distpach y traer los tipos de pokemons.
 import { getPokemonTypes } from "../../redux/actions";
 
+import setBodyColor from "../../setBodyColor";
+
 export function CreatePokemon({ pokemonsTypes, getPokemonTypes }) {
   //Creamos una instancia del objeto useNavigate.
   const navigate = useNavigate();
+
+  setBodyColor({ color: "#F3E5AB" });
 
   /*Cuando el componente se monta, se ejecuta la funcion getPokemonTypes
   encargada de traer los tipos de pokemones.*/
@@ -138,7 +142,8 @@ export function CreatePokemon({ pokemonsTypes, getPokemonTypes }) {
         <select
           name="type2"
           onChange={handleInput}
-          disabled={!inputs.type1.length > 0}>
+          disabled={!inputs.type1.length > 0}
+        >
           {/*Mapeamos el json pokemonTypes para renderizar etiquetas option*/}
 
           {pokemonsTypes &&
@@ -181,7 +186,8 @@ export function CreatePokemon({ pokemonsTypes, getPokemonTypes }) {
           Object.keys(inputs.error).length > 0 || inputs.name === ""
             ? styles.disableButton
             : styles.displayButton
-        }>
+        }
+      >
         Create Pokemon
       </button>
     </form>

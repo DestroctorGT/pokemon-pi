@@ -1,6 +1,6 @@
 img {
   width: 100%;
-  max-width: 200px;
+  max-width: 150px;
   height: auto;
 }
 
@@ -18,12 +18,14 @@ p {
 }
 
 .card {
-  background-color: #faaca8;
-  background-image: linear-gradient(19deg, #faaca8 0%, #ddd6f3 100%);
+  padding: 5% 5%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: start;
+  justify-content: center;
   border-radius: 15px;
   box-shadow: 15px 15px 15px -3px rgba(0, 0, 0, 0.1);
   transition: 0.5s;
-  width: 25%;
 }
 
 .card:hover {
@@ -43,4 +45,11 @@ p {
   border: 2px solid white;
   border-radius: 8px;
   text-align: center;
+}
+
+@media only screen and (min-width: 1025px) {
+
+  .card {
+    padding: .5% 5%;
+  }
 }
